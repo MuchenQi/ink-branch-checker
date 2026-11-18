@@ -1,0 +1,27 @@
+{
+  "name": "@gwc/core",
+  "version": "0.1.0",
+  "description": "State enumeration, voice profiles, and checking for branching Ink dialogue",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.134.0",
+    "inkjs": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.4"
+  },
+  "bin": {
+    "ink-check": "dist/cli.js"
+  }
+}

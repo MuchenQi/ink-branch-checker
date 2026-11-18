@@ -1,0 +1,109 @@
+{
+  "name": "ink-branch-checker",
+  "displayName": "Ink Branch Checker",
+  "description": "Checks a writer's draft of a convergent Ink scene against every story state that can lead into it. It flags; the writer decides.",
+  "version": "0.1.0",
+  "publisher": "TODO-publisher-id",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MuchenQi/ink-branch-checker"
+  },
+  "bugs": {
+    "url": "https://github.com/MuchenQi/ink-branch-checker/issues"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "ink",
+    "inkle",
+    "interactive fiction",
+    "branching narrative",
+    "dialogue",
+    "game writing"
+  ],
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "main": "dist/extension.js",
+  "activationEvents": [
+    "onLanguage:ink"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ink",
+        "extensions": [
+          ".ink"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "inkBranchChecker.checkScene",
+        "title": "Ink: Check Scene at Cursor"
+      },
+      {
+        "command": "inkBranchChecker.listIncomingStates",
+        "title": "Ink: List Incoming States for Knot at Cursor"
+      },
+      {
+        "command": "inkBranchChecker.setApiKey",
+        "title": "Ink: Set Anthropic API Key"
+      },
+      {
+        "command": "inkBranchChecker.judgeFlag",
+        "title": "Ink: Record Judgment on Flag"
+      }
+    ],
+    "configuration": {
+      "title": "Ink Branch Checker",
+      "properties": {
+        "inkBranchChecker.model": {
+          "type": "string",
+          "default": "claude-opus-5-5",
+          "description": "Claude model used to review scenes."
+        },
+        "inkBranchChecker.effort": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "default": "high",
+          "description": "How much thinking Claude puts into each review. Lower is cheaper and faster."
+        },
+        "inkBranchChecker.repeat": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Run every review this many times and show how often each flag recurs. Real problems tend to recur; spurious flags tend not to. Each extra run costs another check."
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "inkBranchChecker.judgeFlag",
+          "when": "false"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json --noEmit && esbuild src/extension.ts --bundle --platform=node --format=cjs --target=node20 --external:vscode --minify --outfile=dist/extension.js",
+    "package": "npm run build && vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "@gwc/core": "0.1.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "1.90.0"
+  }
+}
