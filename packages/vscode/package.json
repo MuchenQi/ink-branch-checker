@@ -3,8 +3,13 @@
   "displayName": "Ink Branch Checker",
   "description": "Checks a writer's draft of a convergent Ink scene against every story state that can lead into it. It flags; the writer decides.",
   "version": "0.1.0",
-  "publisher": "TODO-publisher-id",
+  "publisher": "MuchenQii",
   "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#14212B",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/MuchenQi/ink-branch-checker"
@@ -63,7 +68,7 @@
       "properties": {
         "inkBranchChecker.model": {
           "type": "string",
-          "default": "claude-opus-5-5",
+          "default": "claude-sonnet-5-5",
           "description": "Claude model used to review scenes."
         },
         "inkBranchChecker.effort": {

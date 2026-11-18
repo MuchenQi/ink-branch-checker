@@ -279,7 +279,7 @@ describe("createClaudeReviewer", () => {
     expect(result.usage).toEqual({ inputTokens: 40, outputTokens: 20, cacheReadTokens: 700, cacheWriteTokens: 0 });
 
     const [req] = requests;
-    expect(req.model).toBe("claude-opus-5-5");
+    expect(req.model).toBe("claude-sonnet-5-5");
     expect(req.fallbacks).toBe("default");
     expect(req.betas).toEqual(["server-side-fallback-2026-07-01"]);
     expect(req.output_config).toEqual({ effort: "high", format: { type: "json_schema", schema: REVIEW_SCHEMA } });

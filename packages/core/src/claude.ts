@@ -8,7 +8,7 @@ export interface ClaudeReviewerOptions {
   /** Defaults to a client that reads ANTHROPIC_API_KEY or an `ant auth login` profile. */
   client?: Anthropic;
   apiKey?: string;
-  /** Default "claude-opus-5-5". */
+  /** Default "claude-sonnet-5-5". */
   model?: string;
   /** Default "high". */
   effort?: Effort;
@@ -16,7 +16,7 @@ export interface ClaudeReviewerOptions {
   maxTokens?: number;
 }
 
-export const DEFAULT_MODEL = "claude-opus-5-5";
+export const DEFAULT_MODEL = "claude-sonnet-5-5";
 export const DEFAULT_EFFORT: Effort = "high";
 
 export class ReviewError extends Error {
